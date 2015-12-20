@@ -1,3 +1,6 @@
+# Not Valid for current implementation
+# todo: rewrite
+
 # treescore
 Score a Christmas Tree based on uniformity of lights, shape of tree, and colors used.
 
@@ -7,13 +10,13 @@ http://christianreimer.github.io/treescore/
 ## Simple Example
 
 ```python
->>> import treescore
+>>> from treescore import Treescorer
 >>> fname = 'path/to/image/of/tree.png'
->>> picker = treescore.RegressionColorPicker.from_file('model.data')
->>> scores, images, composite = treescore.judge.score(fname, picker, images=True)
->>> print(scores)
-Scores(overall=65, led=85, shape=97, color=12, area=0.290468)
->>> treescore.judge.utils.display_img(composite)
+>>> treescorer = Treescorer(fname)
+>>> treescorer.score()
+>>> treescorer.scores
+{'color': 72, 'light': 79, 'overall': 80.0, 'shape': 89}
+>>> treescorer.imshow(treescorer.treedrawer.sketch())
 >>>
 ```
 
